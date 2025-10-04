@@ -102,6 +102,12 @@ module.exports = {
 🕒 Time           : ${timePart.padEnd(10)} 
 📅 Date           : ${datePart.padEnd(10)}
 ╚══════════════════╝`;
+
+			const prefixImage = "";
+
+			return message.reply({
+				body: infoBox,
+				attachment: await global.utils.getStreamFromURL(prefixImage)
 			});
 		}
 	}
