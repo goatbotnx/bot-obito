@@ -1,4 +1,4 @@
-/cmd install prefix.js const moment = require("moment-timezone");
+const moment = require("moment-timezone");
 
 module.exports = {
   config: {
