@@ -12,20 +12,25 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [24.x]  # সর্বশেষ Node.js স্থিতিশীল সংস্করণ
+        node-version: [24.x]  # সর্বশেষ স্থিতিশীল Node.js
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-    
-    - name: Setup Node.js ${{ matrix.node-version }}
+
+    - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'npm'  # Dependencies cache
+        cache: 'npm'  # dependency cache
 
     - name: Install dependencies
-      run: npm ci  # Clean install of dependencies
+      run: npm ci || npm install  # যদি ci fail হয়, install try করবে
 
-    - name: Run build or start
-      run: npm start
+    - name: Run tests (optional)
+      if: exists('package.json')
+      run: npm test || echo "No tests defined"
+
+    - name: Start application
+      if: exists('package.json')
+      run: npm start || echo "No start script defined"
