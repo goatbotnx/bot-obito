@@ -2,11 +2,11 @@ const { getPrefix } = global.utils;
 const { commands, aliases } = global.GoatBot;
 
 function wrap(text) {
-  return ' ' + text + ' 💋';
+  return ' ' + text + ' ';
 }
 
 var boxEmojis = ["🌸", "🪻", "🪷", "⭐", "🥀", "🌹", "🏵️", "🍀"];
-var cmdEmojis = ["✨", "🎯", "🪄", "💡", "🦋", "🪽", "💎", "👾", "🛡️"];
+var cmdEmojis = ["✨", "🎯", "🪄", "", "🦋", "🪽", "💎", "", ""];
 
 function randomEmoji() {
   return cmdEmojis[Math.floor(Math.random() * cmdEmojis.length)];
